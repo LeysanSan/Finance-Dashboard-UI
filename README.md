@@ -61,7 +61,13 @@ For this project, I intentionally chose vanilla JavaScript and Bootstrap to:
   * *Admin*: can add new transactions
 
 *  **Dynamic Greeting**
-  UI adapts with a personalized greeting based on role.
+  UI adapts with a personalized greeting based on role
+
+- **Data Persistence (localStorage)**  
+  Transactions are saved in the browser, data remains after page reload.
+
+- **Input Validation**  
+  Basic validation (e.g., positive amounts, valid transaction type)
 
 ---
 
@@ -70,7 +76,6 @@ For this project, I intentionally chose vanilla JavaScript and Bootstrap to:
 Given more time, I would improve the project by:
 
 *  Persisting transactions using `localStorage` or a backend (e.g., Laravel API)
-*  Replacing `prompt()` inputs with a proper form and validation
 *  Enhancing UI/UX (better spacing, colors, responsiveness)
 *  Refactoring into a frontend framework like Vue or React
 *  Improving date formatting and filtering options
