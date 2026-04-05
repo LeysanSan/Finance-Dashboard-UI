@@ -4,7 +4,7 @@ function handleSearch(query) {
     renderAll();
 }
 // Mock data
-let transactions = [
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [
     { id: 1, amount: 1000, type: "income", category: "Salary", date: "2026-04-01" },
     { id: 2, amount: 200, type: "expense", category: "Groceries", date: "2026-04-02" },
     { id: 3, amount: 150, type: "expense", category: "Elettricity", date: "2026-04-03" },
@@ -14,7 +14,9 @@ let transactions = [
     { id: 7, amount: 350, type: "income", category: "Birthday Gift from colleagues", date: "2026-04-03" },
     { id: 8, amount: 50, type: "expense", category: "Petrol", date: "2026-04-04" },
 ];
-
+function saveTransactions() {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+}
 let currentFilter = "all";
 let lineChart;
 let pieChart;
@@ -135,28 +137,42 @@ function changeRole(role) {
 }
 // only Admin can do
 function addTransaction() {
-    const amount = prompt("Enter amount:");
-    const category = prompt("Enter category:");
-    const type = prompt("Type: income or expense");
+    const amountInput = prompt("Enter amount:");
+    const categoryInput = prompt("Enter category:");
+    const typeInput = prompt("Type: income or expense");
 
-    if (!amount || !category || !type) return;
+    // some validations
 
-    // normalize type (important!)
-    const normalizedType = type.toLowerCase();
+    if (!amountInput || !categoryInput || !typeInput) {
+        alert("All fields are required.");
+        return;
+    }
 
-    if (normalizedType !== "income" && normalizedType !== "expense") {
-        alert("Type must be 'income' or 'expense'");
+    const amount = Number(amountInput);
+    const category = categoryInput.trim();
+    const type = typeInput.toLowerCase().trim();
+
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Amount must be a positive number.");
+        return;
+    }
+
+
+    if (type !== "income" && type !== "expense") {
+        alert("Type must be 'income' or 'expense'.");
         return;
     }
 
     transactions.push({
         id: Date.now(),
-        amount: Number(amount),
+        amount,
         category,
-        type: normalizedType,
+        type,
         date: new Date().toISOString().split("T")[0]
     });
 
+    saveTransactions();
     renderAll(); // 
 }
 function generateInsights(data) {
