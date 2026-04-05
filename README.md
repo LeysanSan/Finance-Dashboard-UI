@@ -8,6 +8,20 @@ The goal of the project was to practice core frontend concepts such as state man
 
 ---
 
+## Screenshots
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Search & Filters
+![Search](screenshots/search.png)
+
+### Insights Modal
+![Insights](screenshots/insights.png)
+
+### Basic Validation example
+![Validation](screenshots/validation.png)
+
 ## How to Run
 
 1. Clone the repository
