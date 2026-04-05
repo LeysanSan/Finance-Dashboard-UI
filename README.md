@@ -89,7 +89,7 @@ For this project, I intentionally chose vanilla JavaScript and Bootstrap to:
 
 Given more time, I would improve the project by:
 
-*  Persisting transactions using `localStorage` or a backend (e.g., Laravel API)
+*  Persisting transactions using a backend (e.g., Laravel API)
 *  Enhancing UI/UX (better spacing, colors, responsiveness)
 *  Refactoring into a frontend framework like Vue or React
 *  Improving date formatting and filtering options
